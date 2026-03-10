@@ -1,0 +1,10 @@
+pandas
+numpy
+openai
+hdbscan
+umap-learn
+plotly
+streamlit
+scikit-learn
+python-dotenv
+tqdm
