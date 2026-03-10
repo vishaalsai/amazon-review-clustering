@@ -22,7 +22,7 @@ A product team can use this dashboard to answer:
 does each issue affect?"
 
 ## 🚀 Live Demo
-[Link to Hugging Face Spaces — add after deployment]
+[🚀 Live Demo](https://huggingface.co/spaces/vishaalsai29/amazon-review-clustering)
 
 ## 📊 Key Results
 | Metric | Value |
