@@ -68,19 +68,18 @@ with tab1:
 with tab2:
     st.header("Semantic Map of Customer Complaints")
 
-    fig2 = px.scatter(
-        df,
-        x='umap_x',
-        y='umap_y',
+    plot_df = df[['umap_x', 'umap_y', 'cluster_label']].copy()
+    plot_df = plot_df.rename(columns={'umap_x': 'x', 'umap_y': 'y'})
+
+    st.scatter_chart(
+        plot_df,
+        x='x',
+        y='y',
         color='cluster_label',
-        hover_data={'umap_x': False, 'umap_y': False,
-                    'cluster_label': True, 'review_text': True},
-        title='Semantic Map of Customer Complaints',
-        color_discrete_sequence=px.colors.qualitative.Alphabet
+        height=600
     )
-    fig2.update_traces(marker=dict(size=5, opacity=0.7))
-    fig2.update_layout(height=600, showlegend=True)
-    st.plotly_chart(fig2, use_container_width=True)
+
+    st.caption("Each point is a customer review. Colors represent different issue clusters.")
 
 # ── Tab 3: Cluster explorer ────────────────────────────────────────────────────
 with tab3:
