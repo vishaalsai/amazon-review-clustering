@@ -1,3 +1,14 @@
+---
+title: Amazon Review Issue Clustering
+emoji: 🔍
+colorFrom: blue
+colorTo: indigo
+sdk: docker
+sdk_version: "3.41.1"
+app_file: app.py
+pinned: false
+---
+
 # Amazon Review Issue Clustering
 ### NLP Portfolio Project — Extracting Actionable Insights from Unstructured Text
 
