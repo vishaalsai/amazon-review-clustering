@@ -3,9 +3,9 @@ title: Amazon Review Issue Clustering
 emoji: 🔍
 colorFrom: blue
 colorTo: indigo
-sdk: docker
-sdk_version: "3.41.1"
-app_file: app.py
+sdk: streamlit
+sdk_version: "1.32.0"
+app_file: app/streamlit_app.py
 pinned: false
 ---
 
