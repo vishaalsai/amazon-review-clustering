@@ -8,6 +8,9 @@ st.set_page_config(page_title="Amazon Review Issue Clustering", layout="wide")
 def load_data():
     df = pd.read_csv("data/processed/reviews_clustered.csv")
     df["cluster_label"] = df["cluster_label"].fillna("Unclustered")
+    df['umap_x'] = pd.to_numeric(df['umap_x'], errors='coerce')
+    df['umap_y'] = pd.to_numeric(df['umap_y'], errors='coerce')
+    df = df.dropna(subset=['umap_x', 'umap_y'])
     return df
 
 df = load_data()
