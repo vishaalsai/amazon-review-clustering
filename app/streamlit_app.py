@@ -68,37 +68,18 @@ with tab1:
 with tab2:
     st.header("Semantic Map of Customer Complaints")
 
-    plot_df = df.copy()
-    plot_df["display_label"] = plot_df["cluster_label"].where(
-        plot_df["cluster_id"] != -1, "Unclustered"
-    )
-    plot_df["hover_text"] = plot_df["review_text"].str[:100]
-
-    # Build a color map: Unclustered = grey, rest from Plotly palette
-    labels_ordered = sorted(
-        plot_df[plot_df["cluster_id"] != -1]["display_label"].unique()
-    )
-    color_map = {"Unclustered": "#c0c0c0"}
-
     fig2 = px.scatter(
-        plot_df.sort_values("cluster_id"),
-        x="umap_x",
-        y="umap_y",
-        color="display_label",
-        color_discrete_map=color_map,
-        hover_data={"display_label": True, "hover_text": True,
-                    "umap_x": False, "umap_y": False},
-        labels={"display_label": "Cluster", "hover_text": "Review"},
-        title="Semantic Map of Customer Complaints",
-        opacity=0.75,
+        df,
+        x='umap_x',
+        y='umap_y',
+        color='cluster_label',
+        hover_data={'umap_x': False, 'umap_y': False,
+                    'cluster_label': True, 'review_text': True},
+        title='Semantic Map of Customer Complaints',
+        color_discrete_sequence=px.colors.qualitative.Alphabet
     )
-    fig2.update_traces(marker=dict(size=5))
-    fig2.update_layout(
-        height=650,
-        legend=dict(title="Cluster", itemsizing="constant"),
-        xaxis_title=None,
-        yaxis_title=None,
-    )
+    fig2.update_traces(marker=dict(size=5, opacity=0.7))
+    fig2.update_layout(height=600, showlegend=True)
     st.plotly_chart(fig2, use_container_width=True)
 
 # ── Tab 3: Cluster explorer ────────────────────────────────────────────────────
